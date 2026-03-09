@@ -1,8 +1,8 @@
 #!/bin/bash
 DIR=/opt/frontend
 cd $DIR
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/node-v4.8.6-linux-x64/bin
-NODE_PATH=/usr/local/node-v4.8.6-linux-x64/lib/node_modules
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/node-v16.20.2-linux-x64/bin
+NODE_PATH=/usr/local/node-v16.20.2-linux-x64/lib/node_modules
 start()
 {
       	nohup "node" "$DIR/server.js"  1>>"$DIR/mogambo.log" 2>&1 &
@@ -35,4 +35,3 @@ case $1 in
       echo "usage: /etc/init.d/frontend {start|stop|restart}" ;;
 esac
 exit 0
-
