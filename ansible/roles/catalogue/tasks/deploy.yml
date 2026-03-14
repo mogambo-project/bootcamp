@@ -14,7 +14,7 @@
 
 - meta: flush_handlers
 
-- name: start frontend service
+- name: start catalogue service
   supervisorctl:
     name: catalogue
     state: started

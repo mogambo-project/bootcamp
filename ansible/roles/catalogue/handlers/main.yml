@@ -2,6 +2,6 @@
 # handlers file for catalogue
 
 - name: restart catalogue service
-  service:
+  supervisorctl:
     name: catalogue
     state: restarted

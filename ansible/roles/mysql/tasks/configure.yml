@@ -14,10 +14,22 @@
    tags:
     - configure
 
+ - name: create /root/.my.cnf for root access
+   copy:
+     dest: /root/.my.cnf
+     content: |
+       [client]
+       user=root
+       socket={{ mysql['config']['socket'] }}
+     mode: 0600
+   tags:
+     - configure
+
  - name: create mysql databases
    mysql_db:
      name: "{{ item.key }}"
      state: "{{ item.value.state }}"
+     login_unix_socket: "{{ mysql['config']['socket'] }}"
    with_dict: "{{ mysql['databases'] }}"
    tags:
     - configure 
@@ -29,6 +41,7 @@
      password: "{{ item.value.pass }}"
      priv: "{{ item.value.priv }}"
      state: "{{ item.value.state }}"
+     login_unix_socket: "{{ mysql['config']['socket'] }}"
    with_dict: "{{ mysql['users'] }}"
    tags:
     - configure
