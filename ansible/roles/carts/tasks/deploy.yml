@@ -10,6 +10,7 @@
     url: "{{ carts.artifact }}"
     dest: /opt/apps/carts/carts.jar
     mode: 0755
+    force: yes
   notify: restart carts service
 
 - name: copy supervisor config for carts

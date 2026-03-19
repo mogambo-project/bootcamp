@@ -5,4 +5,9 @@ additional:
     - maven
 
 carts:
-  artifact: http://172.21.65.20:8080/job/New%20Carts%20Pipeline/job/master/6/artifact/target/carts.jar
+  artifact: http://jenkins:8080/job/New%20Carts%20Pipeline/job/master/lastSuccessfulBuild/artifact/target/carts.jar
+  mongodb:
+    host: carts-db
+    port: 27017
+    username: root
+    password: admin123
