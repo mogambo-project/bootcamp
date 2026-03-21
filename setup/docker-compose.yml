@@ -66,6 +66,9 @@ services:
     networks:
       custom:
         ipv4_address: 192.168.61.14
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin123
   jenkins:
     image: myjenkins/blueocean
     build:
