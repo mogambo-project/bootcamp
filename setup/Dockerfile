@@ -18,5 +18,12 @@ RUN apt-get update \
   && chmod +x /usr/local/bin/sops \
   && rm -rf /var/lib/apt/lists/* \
   && sops --version && age --version
+# --- kubectl for the redeploy job (matches kind cluster v1.31) ---
+ARG KUBECTL_VERSION=v1.31.0
+RUN ARCH="$(dpkg --print-architecture)" \
+  && curl -fsSL -o /usr/local/bin/kubectl \
+       "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl" \
+  && chmod +x /usr/local/bin/kubectl \
+  && kubectl version --client=true
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean docker-workflow"

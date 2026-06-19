@@ -7,6 +7,9 @@ networks:
       driver: default
       config:
         - subnet: 192.168.61.0/24
+  # the kind cluster's docker network (created by `kind`), so Jenkins can reach the API server
+  kind:
+    external: true
 
 volumes:
   cs-ansible:
@@ -84,6 +87,7 @@ services:
     networks:
       custom:
         ipv4_address: 192.168.61.15
+      kind: {}        # reach the kind API server (practice-control-plane:6443) for the redeploy job
     dns: 8.8.8.8
     domainname: codespaces.io
     hostname: jenkins
